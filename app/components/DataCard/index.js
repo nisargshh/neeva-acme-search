@@ -13,7 +13,7 @@ import { Card } from 'react-bootstrap';
 import styles from './styles.css';
 import Tag from '../Tag';
 
-function DataCard({ type, tweet, calendar, dropbox, Logo }) {
+function DataCard({ type, tweet, calendar, dropbox, contacts, slack, Logo }) {
   if (type === 'tweet') {
     const momentDate = moment(tweet.timestamp, 'YYYY-MM-DD');
     const relativeDate = momentDate.fromNow();
@@ -76,12 +76,64 @@ function DataCard({ type, tweet, calendar, dropbox, Logo }) {
             {dropbox.shared_with.map(el => (
               <Tag name={el} className={styles.tags} />
             ))}
-            {/* <br />
-            Path: {dropbox.path} */}
+            <br />
+            Path: <span className={styles.pathName}>{dropbox.path}</span>
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-muted">
           {dropbox.matching_terms.map(el => (
+            <Tag name={el} className={styles.tags} />
+          ))}
+          <div className={styles.timestamp}>{relativeDate}</div>
+        </Card.Footer>
+      </Card>
+    );
+  }
+  if (type === 'contacts') {
+    const momentDate = moment(contacts.last_contact, 'YYYY-MM-DD', true);
+    const relativeDate = momentDate.fromNow();
+    return (
+      <Card className={styles.cardStyle}>
+        <Card.Header>
+          {Logo}
+          {`${contacts.name} - ${contacts.company}`}
+        </Card.Header>
+        <Card.Body>
+          <Card.Text>
+            Emails:{' '}
+            {contacts.emails.map(el => (
+              <Tag name={el} className={styles.tags} />
+            ))}
+            <br />
+            Phones:{' '}
+            {contacts.phones.map(el => (
+              <Tag name={el} className={styles.tags} />
+            ))}
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer className="text-muted">
+          {contacts.matching_terms.map(el => (
+            <Tag name={el} className={styles.tags} />
+          ))}
+          <div className={styles.timestamp}>{relativeDate}</div>
+        </Card.Footer>
+      </Card>
+    );
+  }
+  if (type === 'slack') {
+    const momentDate = moment(slack.timestamp, 'YYYY-MM-DD hh:mm:ss', true);
+    const relativeDate = momentDate.fromNow();
+    return (
+      <Card className={styles.cardStyle}>
+        <Card.Header>
+          {Logo}
+          {`${slack.channel} - ${slack.author}`}
+        </Card.Header>
+        <Card.Body>
+          <Card.Text>{slack.message}</Card.Text>
+        </Card.Body>
+        <Card.Footer className="text-muted">
+          {slack.matching_terms.map(el => (
             <Tag name={el} className={styles.tags} />
           ))}
           <div className={styles.timestamp}>{relativeDate}</div>
@@ -96,6 +148,8 @@ DataCard.propTypes = {
   tweet: PropTypes.object,
   calendar: PropTypes.object,
   dropbox: PropTypes.object,
+  contacts: PropTypes.object,
+  slack: PropTypes.object,
   Logo: PropTypes.element,
 };
 

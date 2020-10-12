@@ -1,22 +1,21 @@
 /**
  *
- * Tweet
+ * Slack
  *
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 import {
-  AiFillTwitterCircle,
+  AiFillSlackCircle,
   // eslint-disable-next-line import/no-unresolved
 } from 'react-icons/Ai';
 import DataCard from '../DataCard';
-import TweetData from '../../data/tweet.json';
+import SlackData from '../../data/slack.json';
 import styles from './styles.css';
 
-function Tweet({ search }) {
-  const tweetItems = TweetData.tweet
+function Slack({ search }) {
+  const slackItems = SlackData.slack
     .filter(data => {
       if (search === '') {
         return data;
@@ -28,16 +27,16 @@ function Tweet({ search }) {
     })
     .map(data => (
       <DataCard
-        type="tweet"
-        tweet={data}
-        Logo={<AiFillTwitterCircle className={styles.tweetLogo} />}
+        type="slack"
+        slack={data}
+        Logo={<AiFillSlackCircle className={styles.dropboxLogo} />}
       />
     ));
-  return <span>{tweetItems}</span>;
+  return <span>{slackItems}</span>;
 }
 
-Tweet.propTypes = {
+Slack.propTypes = {
   search: PropTypes.string,
 };
 
-export default Tweet;
+export default Slack;

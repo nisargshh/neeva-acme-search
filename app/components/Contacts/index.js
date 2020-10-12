@@ -1,22 +1,21 @@
 /**
  *
- * Tweet
+ * Contacts
  *
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 import {
-  AiFillTwitterCircle,
+  AiFillContacts,
   // eslint-disable-next-line import/no-unresolved
 } from 'react-icons/Ai';
 import DataCard from '../DataCard';
-import TweetData from '../../data/tweet.json';
+import ContactsData from '../../data/contacts.json';
 import styles from './styles.css';
 
-function Tweet({ search }) {
-  const tweetItems = TweetData.tweet
+function Contacts({ search }) {
+  const contactsItems = ContactsData.contacts
     .filter(data => {
       if (search === '') {
         return data;
@@ -28,16 +27,16 @@ function Tweet({ search }) {
     })
     .map(data => (
       <DataCard
-        type="tweet"
-        tweet={data}
-        Logo={<AiFillTwitterCircle className={styles.tweetLogo} />}
+        type="contacts"
+        contacts={data}
+        Logo={<AiFillContacts className={styles.contactsLogo} />}
       />
     ));
-  return <span>{tweetItems}</span>;
+  return <span>{contactsItems}</span>;
 }
 
-Tweet.propTypes = {
+Contacts.propTypes = {
   search: PropTypes.string,
 };
 
-export default Tweet;
+export default Contacts;
