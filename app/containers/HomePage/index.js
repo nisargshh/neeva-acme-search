@@ -16,8 +16,8 @@ export default function HomePage() {
     setSearch(value);
   }
 
-  function onSearchSubmit() {
-    console.log(search);
+  function onSearchSubmit(e) {
+    setSearch(e);
   }
 
   function keyPress(e) {

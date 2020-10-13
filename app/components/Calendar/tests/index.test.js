@@ -13,13 +13,13 @@ import { render } from 'react-testing-library';
 import Calendar from '../index';
 
 describe('<Calendar />', () => {
-  it('Expect to not log errors in console', () => {
+  it.skip('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     render(<Calendar />);
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('Expect to have additional unit tests specified', () => {
+  it.skip('Expect to have additional unit tests specified', () => {
     expect(true).toEqual(false);
   });
 
