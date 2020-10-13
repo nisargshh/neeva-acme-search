@@ -25,8 +25,9 @@ function Slack({ search }) {
       }
       return null;
     })
-    .map(data => (
+    .map((data, i) => (
       <DataCard
+        key={`slack${i}`}
         type="slack"
         slack={data}
         Logo={<AiFillSlackCircle className={styles.dropboxLogo} />}

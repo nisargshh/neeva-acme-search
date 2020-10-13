@@ -26,8 +26,9 @@ function Tweet({ search }) {
       }
       return null;
     })
-    .map(data => (
+    .map((data, i) => (
       <DataCard
+        key={`tweet${i}`}
         type="tweet"
         tweet={data}
         Logo={<AiFillTwitterCircle className={styles.tweetLogo} />}

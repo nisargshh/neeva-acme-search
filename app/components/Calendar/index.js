@@ -25,8 +25,9 @@ function Calendar({ search }) {
       }
       return null;
     })
-    .map(data => (
+    .map((data, i) => (
       <DataCard
+        key={`calendar${i}`}
         type="calendar"
         calendar={data}
         Logo={<AiOutlineMail className={styles.emailLogo} />}

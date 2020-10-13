@@ -25,8 +25,9 @@ function Contacts({ search }) {
       }
       return null;
     })
-    .map(data => (
+    .map((data, i) => (
       <DataCard
+        key={`contacts${i}`}
         type="contacts"
         contacts={data}
         Logo={<AiFillContacts className={styles.contactsLogo} />}

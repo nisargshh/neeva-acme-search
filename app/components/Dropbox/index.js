@@ -25,8 +25,9 @@ function Dropbox({ search }) {
       }
       return null;
     })
-    .map(data => (
+    .map((data, i) => (
       <DataCard
+        key={`dropbox${i}`}
         type="dropbox"
         dropbox={data}
         Logo={<AiFillDropboxCircle className={styles.dropboxLogo} />}
