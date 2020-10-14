@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  AiOutlineMail,
+  AiFillCalendar,
   // eslint-disable-next-line import/no-unresolved
 } from 'react-icons/Ai';
 import DataCard from '../DataCard';
@@ -30,7 +30,7 @@ function Calendar({ search }) {
         key={`calendar${i}`}
         type="calendar"
         calendar={data}
-        Logo={<AiOutlineMail className={styles.emailLogo} />}
+        Logo={<AiFillCalendar className={styles.emailLogo} />}
       />
     ));
   return <span>{calendarItems}</span>;
